@@ -33,6 +33,7 @@ public class BerryBush : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
+            playerStats = other.GetComponent<PlayerStats>();
             Debug.Log("Drücke 'E', um Beeren zu sammeln.");
         }
     }
@@ -43,6 +44,7 @@ public class BerryBush : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+            playerStats = null;
         }
     }
 

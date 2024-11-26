@@ -1,11 +1,10 @@
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour
 {
-    public static PlayerStats singleton;
-
     public int maxHealth = 100;
     public int maxFood = 100;
     public int maxWater = 100;
@@ -23,19 +22,9 @@ public class PlayerStats : MonoBehaviour
 
     public InGameUI inGameUI;
 
-    private bool isHealthDecreasing = false;
+    public int woodCount = 0;
 
-    void Awake()
-    {
-        if (singleton == null)
-        {
-            singleton = this;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
+    private bool isHealthDecreasing = false;
 
     void Start()
     {
@@ -44,12 +33,8 @@ public class PlayerStats : MonoBehaviour
         currentFood = maxFood;
         currentWater = maxWater;
 
-        inGameUI = InGameUI.singleton;
-        inGameUI.InitializeInventorySlots();
-
         StartCoroutine(DecreaseFoodOverTime());
         StartCoroutine(DecreaseWaterOverTime());
-        inGameUI.UpdateUI();
     }
 
     void Update()
@@ -86,14 +71,15 @@ public class PlayerStats : MonoBehaviour
     {
         for (int i = 0; i < inGameUI.inventorySlots.Length; i++)
         {
-            if (inGameUI.inventorySlots[i] == null)
+            if (inGameUI.inventorySlots[i] != null)
             {
-                if(inGameUI.inventorySlots[i].GetComponent<Image>().sprite != null){                
-               // inGameUI.inventorySlots[i] = new GameObject { tag = "Wood" };
-                //inGameUI.inventorySlots[i].transform.tag = "Wood";
-                
-                inGameUI.UpdateInventoryUI(i, "Wood");
-                break;
+                if(inGameUI.inventorySlots[i].GetComponent<Image>().sprite == InGameUI.singleton.emptySlotSprite)
+                {
+                    // inGameUI.inventorySlots[i] = new GameObject { tag = "Wood" };
+                    //inGameUI.inventorySlots[i].transform.tag = "Wood";
+                    woodCount++;
+                    inGameUI.UpdateInventoryUI(i, "Wood");
+                    break;
                 }
             }
         }
@@ -103,41 +89,30 @@ public class PlayerStats : MonoBehaviour
     {
         for (int i = 0; i < inGameUI.inventorySlots.Length; i++)
         {
-            if (inGameUI.inventorySlots[i] == null)
+            if (inGameUI.inventorySlots[i] != null)
             {
-                if(inGameUI.inventorySlots[i].GetComponent<Image>().sprite != null){                  
-                //inGameUI.inventorySlots[i] = Instantiate(berryPrefab); 
-                //inGameUI.inventorySlots[i].transform.tag = "Berry";
-                inGameUI.UpdateInventoryUI(i, "Berry");
-                break;
+                if(inGameUI.inventorySlots[i].GetComponent<Image>().sprite == InGameUI.singleton.emptySlotSprite){
+                    //inGameUI.inventorySlots[i] = Instantiate(berryPrefab); 
+                    //inGameUI.inventorySlots[i].transform.tag = "Berry";
+                    // Add berry count
+                    inGameUI.UpdateInventoryUI(i, "Berry");
+                    break;
                 }
             }
         }
     }
     private void RemoveWoodFromInventory(int count)
     {
-        int woodRemoved = 0;
-
-        for (int i = 0; i < inGameUI.inventorySlots.Length; i++)
+        int i = 0;
+        foreach (Image inventorySlot in inGameUI.inventorySlots)
         {
-            if (inGameUI.inventorySlots[i] != null && inGameUI.inventorySlots[i].CompareTag("Wood"))
+            if (inventorySlot.sprite == InGameUI.singleton.woodSprite)
             {
-                inGameUI.inventorySlots[i] = null;
-                woodRemoved++;
-
-                if (woodRemoved >= count)
-                    break;
+                inGameUI.UpdateInventoryUI(i, null);
             }
-        }
-
-        for (int i = 0; i < inGameUI.inventorySlots.Length; i++)
-        {
-            inGameUI.UpdateInventoryUI(i, inGameUI.inventorySlots[i].gameObject);
+            i++;
         }
     }
-
-
-
 
     private IEnumerator DecreaseFoodOverTime()
     {
@@ -200,26 +175,19 @@ public class PlayerStats : MonoBehaviour
 
     private void TryPlaceCampfire()
     {
-        int woodCount = 0;
-
-        foreach (var item in inGameUI.inventorySlots)
-        {
-            if (item != null && item.CompareTag("Wood"))
-            {
-                woodCount++;
-            }
-        }
-
         if (woodCount >= 3)
         {
-            Vector3 campfirePosition = transform.forward * 2f;
-            campfirePosition.y = 0;
-            Quaternion rotation = Quaternion.Euler(0, transform.eulerAngles.y, 0);
+            if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out RaycastHit hit, 10, LayerMask.GetMask("Terrain")))
+            {
+                Instantiate(CampfirePrefab, hit.point, Quaternion.identity);
+                RemoveWoodFromInventory(3);
 
-            Instantiate(CampfirePrefab, campfirePosition, rotation);
-            RemoveWoodFromInventory(3);
-
-            Debug.Log("Campfire placed successfully!");
+                Debug.Log("Campfire placed successfully!");
+            }
+            else
+            {
+                Debug.Log("Not valid spot for campfire!");
+            }
         }
         else
         {

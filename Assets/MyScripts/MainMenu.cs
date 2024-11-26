@@ -11,6 +11,12 @@ public class MainMenu : MonoBehaviour
 
     public Transform StartPosition;
 
+    private void Start()
+    {
+        mainMenuCanvas.SetActive(true);
+        inGameUICanvas.SetActive(false);
+    }
+
     public void StartGame()
     {
 
@@ -23,8 +29,10 @@ public class MainMenu : MonoBehaviour
         Destroy(mainMenuCamera);
 
         GameObject player = Instantiate(playerPrefab, StartPosition.position, Quaternion.identity);
-        player.GetComponent<PlayerStats>().inGameUI=inGameUICanvas.GetComponent<InGameUI>();
-
+        InGameUI.singleton.playerStats = player.GetComponent<PlayerStats>();
+        InGameUI.singleton.InitializeInventorySlots();
+        InGameUI.singleton.UpdateUI();
+        player.GetComponent<PlayerStats>().inGameUI = InGameUI.singleton;
 
         // Add any other actions needed to start the game
         Debug.Log("Game Started!");

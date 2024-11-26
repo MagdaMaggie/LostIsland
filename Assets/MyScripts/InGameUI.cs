@@ -16,7 +16,7 @@ public class InGameUI : MonoBehaviour
     public Sprite woodSprite;
     public Sprite berrySoupSprite;
 
-    private PlayerStats playerStats;
+    public PlayerStats playerStats;
 
     void Awake()
     {
@@ -32,8 +32,6 @@ public class InGameUI : MonoBehaviour
 
     void Start()
     {        
-        //DontDestroyOnLoad(gameObject);
-        playerStats = PlayerStats.singleton;
         UpdateUI();
         InitializeInventorySlots();
     }
