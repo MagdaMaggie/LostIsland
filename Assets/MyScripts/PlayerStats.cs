@@ -27,7 +27,7 @@ public class PlayerStats : MonoBehaviour
     private bool isHealthDecreasing = false;
 
     void Start()
-    {
+    { 
         DontDestroyOnLoad(gameObject);
         currentHealth = maxHealth;
         currentFood = maxFood;
