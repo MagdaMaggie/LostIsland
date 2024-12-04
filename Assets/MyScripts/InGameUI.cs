@@ -32,6 +32,16 @@ public class InGameUI : MonoBehaviour
 
     void Start()
     {        
+        if (healthBar == null || foodBar == null || waterBar == null)
+        {
+            Debug.LogError("One or more sliders are not assigned!");
+        }
+
+        if (emptySlotSprite == null || berrySprite == null || woodSprite == null || berrySoupSprite == null)
+        {
+            Debug.LogError("One or more sprites are not assigned!");
+        }
+
         UpdateUI();
         InitializeInventorySlots();
     }
@@ -45,11 +55,23 @@ public class InGameUI : MonoBehaviour
                 inventorySlots[i].sprite = emptySlotSprite;
                 inventorySlots[i].enabled = true;
             }
+
+            if (inventorySlots[i] == null)
+            {
+                Debug.LogError($"Inventory slot at index {i} is null!");
+                continue;
+            }
         }
     }
 
     public void UpdateUI()
     {
+        if (playerStats == null)
+        {
+            Debug.LogError("PlayerStats reference is missing in InGameUI!");
+            return;
+        }
+
         if (playerStats != null)
         {
             healthBar.value = playerStats.currentHealth;
