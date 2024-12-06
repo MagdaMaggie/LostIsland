@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class TreeInteraction : MonoBehaviour
 {
+    public PlayerStats playerStats;
     private bool playerInRange = false;
 
     private void OnTriggerEnter(Collider other)
@@ -10,6 +11,7 @@ public class TreeInteraction : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
+            playerStats = other.GetComponent<PlayerStats>();
             Debug.Log("Player in range of tree");
         }
     }
@@ -20,6 +22,7 @@ public class TreeInteraction : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
+            playerStats = null;
             Debug.Log("Player left the range of tree");
         }
     }
@@ -30,7 +33,7 @@ public class TreeInteraction : MonoBehaviour
         if (playerInRange && Input.GetKeyDown(KeyCode.E))
         {
             // Call method to add wood to inventory
-            PlayerStats.singleton.AddWoodToInventory();
+            playerStats.AddWoodToInventory();
             
             // Destroy the tree after adding wood
             Destroy(gameObject); // Destroy the tree
