@@ -53,10 +53,10 @@ public class PlayerStats : MonoBehaviour
 
     private void EatItemFromInventory(int slotIndex)
     {
-        if (inGameUI.inventorySlots[slotIndex] != null && inGameUI.inventorySlots[slotIndex].CompareTag("Berry"))
+        if (inGameUI.inventorySlots[slotIndex] != null && inGameUI.inventorySlots[slotIndex].sprite == InGameUI.singleton.berrySprite)
         {
             Debug.Log($"Eating berry from slot {slotIndex}.");
-            inGameUI.inventorySlots[slotIndex] = null;
+            //inGameUI.inventorySlots[slotIndex] = null;
             currentFood = Mathf.Min(currentFood + Mathf.RoundToInt(maxFood * 0.1f), maxFood);
             inGameUI.UpdateInventoryUI(slotIndex, null); 
             inGameUI.UpdateUI();
@@ -77,7 +77,9 @@ public class PlayerStats : MonoBehaviour
                 {
                     // inGameUI.inventorySlots[i] = new GameObject { tag = "Wood" };
                     //inGameUI.inventorySlots[i].transform.tag = "Wood";
+                    Debug.Log(this.gameObject.name + " Old Wood: " + woodCount);
                     woodCount++;
+                    Debug.Log(this.gameObject.name + "New Wood: " + woodCount);
                     inGameUI.UpdateInventoryUI(i, "Wood");
                     break;
                 }
