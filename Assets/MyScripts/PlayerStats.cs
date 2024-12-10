@@ -56,8 +56,14 @@ public class PlayerStats : MonoBehaviour
         if (inGameUI.inventorySlots[slotIndex] != null && inGameUI.inventorySlots[slotIndex].sprite == InGameUI.singleton.berrySprite)
         {
             Debug.Log($"Eating berry from slot {slotIndex}.");
-            //inGameUI.inventorySlots[slotIndex] = null;
             currentFood = Mathf.Min(currentFood + Mathf.RoundToInt(maxFood * 0.1f), maxFood);
+            inGameUI.UpdateInventoryUI(slotIndex, null); 
+            inGameUI.UpdateUI();
+        }
+        else if(inGameUI.inventorySlots[slotIndex] != null && inGameUI.inventorySlots[slotIndex].sprite == InGameUI.singleton.berrySoupSprite)
+        {
+            Debug.Log($"Eating berry Soup from slot {slotIndex}.");
+            currentFood = Mathf.Min(currentFood + Mathf.RoundToInt(maxFood * 0.2f), maxFood);
             inGameUI.UpdateInventoryUI(slotIndex, null); 
             inGameUI.UpdateUI();
         }
