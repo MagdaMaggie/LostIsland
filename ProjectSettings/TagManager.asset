@@ -8,11 +8,12 @@ TagManager:
   - Tree
   - Berry
   - Wood
+  - Campfire
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Terrain
   - Water
   - UI
   - 

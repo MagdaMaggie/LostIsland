@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEditor;
 
 public class MyFPScript : MonoBehaviour
 {
@@ -49,6 +50,18 @@ public class MyFPScript : MonoBehaviour
             enabled = false; // Disable this script if CharacterController is missing
             return;
         }
+
+        groundMask = LayerMask.GetMask("Terrain");
+        if (groundMask == 0)
+        {
+            Debug.LogError("No layer named 'Terrain' found. Please ensure the 'Terrain' layer exists in your project.");
+        }
+        else
+        {
+            Debug.Log($"Ground mask set to Terrain layer with mask value: {groundMask.value}");
+        }
+
+        UnityEditor.EditorUtility.SetDirty(this);
 
         mousePosPrevious = Input.mousePosition;
         //Cursor.lockState = CursorLockMode.Locked;

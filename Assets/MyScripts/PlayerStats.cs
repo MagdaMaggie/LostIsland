@@ -196,4 +196,23 @@ public class PlayerStats : MonoBehaviour
             Debug.Log("Not enough wood to build a campfire!");
         }
     }
+
+    public bool ConvertBerryToSoup()
+    {
+    for (int i = 0; i < inGameUI.inventorySlots.Length; i++)
+    {
+        Image slot = inGameUI.inventorySlots[i];
+        
+        // Check if the slot contains a berry
+        if (slot.sprite == InGameUI.singleton.berrySprite)
+        {
+            // Replace berry with berry soup
+            slot.sprite = InGameUI.singleton.berrySoupSprite;
+            inGameUI.UpdateInventoryUI(i, "BerrySoup");
+            return true; // Successfully converted
+        }
+    }
+
+    return false; // No berry found in inventory
+    }
 }
