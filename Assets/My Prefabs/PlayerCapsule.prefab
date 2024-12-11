@@ -157,7 +157,7 @@ MonoBehaviour:
   GroundedRadius: 0.5
   GroundLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 8
   CinemachineCameraTarget: {fileID: 7798965295072128125}
   TopClamp: 89
   BottomClamp: -89
@@ -336,15 +336,11 @@ MonoBehaviour:
   currentWater: 0
   foodDecayRate: 1
   waterDecayRate: 2
-  inventory:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   berryPrefab: {fileID: 1615817615245983648, guid: 825828f5bf6f75c4b82dafc9253e9b56, type: 3}
   woodPrefab: {fileID: 9162822708189475408, guid: 3159aca8d3f03024cba3e91c278a51f6, type: 3}
   CampfirePrefab: {fileID: 29069456081649769, guid: 4b0954bd791c2204cbdc7122ab792a25, type: 3}
+  inGameUI: {fileID: 0}
+  woodCount: 0
 --- !u!1 &491293593954522911
 GameObject:
   m_ObjectHideFlags: 0
