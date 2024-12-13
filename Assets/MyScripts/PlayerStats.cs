@@ -193,7 +193,7 @@ public class PlayerStats : MonoBehaviour
     {
         isHealthDecreasing = true;
 
-        while (currentHealth > 0 && (currentFood == 0 || currentWater == 0))
+        while (currentHealth > 0 && (currentFood == 0 || currentWater == 0 || IsUnderWater()))
         {
             yield return new WaitForSeconds(5f);
             currentHealth -= 1;
@@ -205,7 +205,8 @@ public class PlayerStats : MonoBehaviour
     }
 
     private bool IsUnderWater(){
-        if(transform.position.y<=0.25f) {
+        Debug.Log(transform.position.y);
+        if(transform.position.y <= 0.25f) {
             return true;
         }else{
             return false;
@@ -214,15 +215,21 @@ public class PlayerStats : MonoBehaviour
 
     private void CheckHealthDecreaseCondition()
     {
+        Debug.Log(IsUnderWater());
         if ((currentFood == 0 || currentWater == 0) && !isHealthDecreasing)
         {
             StartCoroutine(DecreaseHealthOverTime());
         }
-        else if ((currentFood > 0 || currentWater > 0) && isHealthDecreasing)
+        else if(IsUnderWater())
+        {
+            StartCoroutine(DecreaseHealthOverTime());
+        }
+        else if ((currentFood > 0 && currentWater > 0 && !IsUnderWater()) && isHealthDecreasing)
         {
             StopCoroutine(DecreaseHealthOverTime());
             isHealthDecreasing = false;
         }
+
     }
 
     public void DrinkWater(int amount)
