@@ -21,7 +21,8 @@ public class TriggerSound : MonoBehaviour
         if (other.CompareTag("Player") && audioSource != null)
         {
             audioSource.Play();
-            Debug.Log($"Playing sound for {gameObject.name}.");
+           
+            Debug.Log("Playing sound for {gameObject.name}.");
         }
     }
 }

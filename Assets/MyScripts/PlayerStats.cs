@@ -26,6 +26,11 @@ public class PlayerStats : MonoBehaviour
 
     private bool isHealthDecreasing = false;
 
+    public GameObject gameOverPopup; 
+    public MyFPScript playerMovementScript; 
+
+    private bool isGameOver = false;
+
     void Start()
     { 
         DontDestroyOnLoad(gameObject);
@@ -35,6 +40,11 @@ public class PlayerStats : MonoBehaviour
 
         StartCoroutine(DecreaseFoodOverTime());
         StartCoroutine(DecreaseWaterOverTime());
+
+        if (gameOverPopup != null)
+        {
+            gameOverPopup.SetActive(false);
+        }
     }
 
     void Update()
@@ -49,6 +59,38 @@ public class PlayerStats : MonoBehaviour
         {
             TryPlaceCampfire();
         }
+
+        if (currentHealth <= 0 && !isGameOver)
+        {
+            Debug.Log("Game Over was triggered!");
+            TriggerGameOver();
+        }
+    }
+
+    void TriggerGameOver()
+    {
+        isGameOver = true;
+
+        if (gameOverPopup != null)
+        {
+            gameOverPopup.SetActive(true);
+        }
+
+        if (playerMovementScript != null)
+        {
+            playerMovementScript.enabled = false;
+        }
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        Debug.Log("Game Over triggered!");
+    }
+
+    public void QuitGame()
+    {
+        Debug.Log("Game is quitting...");
+        Application.Quit();
     }
 
     private void EatItemFromInventory(int slotIndex)
