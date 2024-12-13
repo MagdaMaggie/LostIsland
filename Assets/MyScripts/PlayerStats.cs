@@ -67,6 +67,7 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+
     void TriggerGameOver()
     {
         isGameOver = true;
@@ -203,6 +204,14 @@ public class PlayerStats : MonoBehaviour
         isHealthDecreasing = false;
     }
 
+    private bool IsUnderWater(){
+        if(transform.position.y<=0.25f) {
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     private void CheckHealthDecreaseCondition()
     {
         if ((currentFood == 0 || currentWater == 0) && !isHealthDecreasing)
@@ -231,7 +240,7 @@ public class PlayerStats : MonoBehaviour
             {
                 Instantiate(CampfirePrefab, hit.point, Quaternion.identity);
                 RemoveWoodFromInventory(3);
-
+                woodCount-=3;
                 Debug.Log("Campfire placed successfully!");
             }
             else

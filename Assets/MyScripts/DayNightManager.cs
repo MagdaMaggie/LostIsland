@@ -22,23 +22,16 @@ public class DayNightManager : MonoBehaviour
         {
             Debug.LogError("Please assign Sun and Moon lights in the Inspector.");
         }
-
         currentTime = 0f;
     }
 
     void Update()
     {
-        // Update time
         currentTime += (Time.deltaTime / dayDuration) * timeMultiplier;
         if (currentTime >= 1f)
         {
-            currentTime = 0f; 
-        }
-
-
+            currentTime = 0f; }
         RotateSunAndMoon();
-
-
         AdjustLighting();
     }
 
@@ -53,14 +46,10 @@ public class DayNightManager : MonoBehaviour
 
     private void AdjustLighting()
     {
-        
         float sunIntensity = sunIntensityCurve.Evaluate(currentTime);
         float moonIntensity = moonIntensityCurve.Evaluate(currentTime);
-
         sunLight.intensity = sunIntensity;
         moonLight.intensity = moonIntensity;
-
-
         sunLight.enabled = sunIntensity > 0.01f;
         moonLight.enabled = moonIntensity > 0.01f;
     }

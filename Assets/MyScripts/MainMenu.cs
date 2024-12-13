@@ -42,6 +42,7 @@ public class MainMenu : MonoBehaviour
 
     public void OpenOptions()
     {
+        mainMenuCanvas.SetActive(false);
         if (optionsPopup != null)
         {
             optionsPopup.SetActive(true); 
@@ -60,6 +61,7 @@ public class MainMenu : MonoBehaviour
             optionsPopup.SetActive(false); 
             Debug.Log("Options popup closed.");
         }
+        mainMenuCanvas.SetActive(true);
     }
 
 
