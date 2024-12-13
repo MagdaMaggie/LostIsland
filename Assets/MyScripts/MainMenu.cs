@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject optionsPopup;
     public GameObject mainMenuCanvas; 
     public GameObject inGameUICanvas; 
 
@@ -20,10 +21,10 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
 
-        // Hide the Main Menu Canvas
+
         mainMenuCanvas.SetActive(false);
 
-        // Show the In-Game UI Canvas
+
         inGameUICanvas.SetActive(true);
 
         Destroy(mainMenuCamera);
@@ -34,21 +35,37 @@ public class MainMenu : MonoBehaviour
         InGameUI.singleton.UpdateUI();
         player.GetComponent<PlayerStats>().inGameUI = InGameUI.singleton;
 
-        // Add any other actions needed to start the game
+
         Debug.Log("Game Started!");
     }
 
-    // Function for the options button
+
     public void OpenOptions()
     {
-        // This function will later open the options menu.
-        Debug.Log("Options button pressed.");
+        if (optionsPopup != null)
+        {
+            optionsPopup.SetActive(true); 
+            Debug.Log("Options button pressed. Popup opened.");
+        }
+        else
+        {
+            Debug.LogError("Options Popup is not assigned in the Inspector.");
+        }
     }
 
-    // Function to quit the game
+    public void CloseOptions()
+    {
+        if (optionsPopup != null)
+        {
+            optionsPopup.SetActive(false); 
+            Debug.Log("Options popup closed.");
+        }
+    }
+
+
     public void QuitGame()
     {
-        // Exits the application
+
         Application.Quit();
         Debug.Log("Game is exiting.");
     }
