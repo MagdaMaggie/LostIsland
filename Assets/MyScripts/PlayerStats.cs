@@ -26,7 +26,7 @@ public class PlayerStats : MonoBehaviour
 
     private bool isHealthDecreasing = false;
 
-    public GameObject gameOverPopup; 
+    public GameObject GameOverCanvas; 
     public MyFPScript playerMovementScript; 
 
     private bool isGameOver = false;
@@ -41,9 +41,9 @@ public class PlayerStats : MonoBehaviour
         StartCoroutine(DecreaseFoodOverTime());
         StartCoroutine(DecreaseWaterOverTime());
 
-        if (gameOverPopup != null)
+        if (GameOverCanvas != null)
         {
-            gameOverPopup.SetActive(false);
+            GameOverCanvas.SetActive(false);
         }
     }
 
@@ -72,9 +72,9 @@ public class PlayerStats : MonoBehaviour
     {
         isGameOver = true;
 
-        if (gameOverPopup != null)
+        if (GameOverCanvas != null)
         {
-            gameOverPopup.SetActive(true);
+            GameOverCanvas.SetActive(true);
         }
 
         if (playerMovementScript != null)
@@ -275,6 +275,6 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    return false; 
+    return false; // No berry found in inventory
     }
 }
