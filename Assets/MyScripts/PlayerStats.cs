@@ -267,16 +267,14 @@ public class PlayerStats : MonoBehaviour
     {
         Image slot = inGameUI.inventorySlots[i];
         
-        // Check if the slot contains a berry
         if (slot.sprite == InGameUI.singleton.berrySprite)
         {
-            // Replace berry with berry soup
             slot.sprite = InGameUI.singleton.berrySoupSprite;
             inGameUI.UpdateInventoryUI(i, "BerrySoup");
-            return true; // Successfully converted
+            return true; 
         }
     }
 
-    return false; // No berry found in inventory
+    return false; 
     }
 }
