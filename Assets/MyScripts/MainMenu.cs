@@ -5,7 +5,7 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject optionsPopup;
     public GameObject mainMenuCanvas; 
-    public GameObject inGameUICanvas; 
+    public GameObject inGameUICanvas;
 
     public GameObject playerPrefab;
     public GameObject mainMenuCamera;
