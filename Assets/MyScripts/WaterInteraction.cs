@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class WaterInteraction : MonoBehaviour
 {
-    private bool isPlayerInRange = false; // Flag, um zu prüfen, ob der Spieler in der Nähe ist
-    public int waterAmount = 25; // Menge des Wassers, die die Water Bar erhöht
+    private bool isPlayerInRange = false; 
+    public int waterAmount = 25; 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) // Überprüft, ob der Spieler den Collider betritt
+        if (other.CompareTag("Player")) 
         {
             isPlayerInRange = true;
         }
@@ -15,7 +15,7 @@ public class WaterInteraction : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player")) // Überprüft, ob der Spieler den Collider verlässt
+        if (other.CompareTag("Player"))
         {
             isPlayerInRange = false;
         }
@@ -23,13 +23,12 @@ public class WaterInteraction : MonoBehaviour
 
     private void Update()
     {
-        if (isPlayerInRange && Input.GetKeyDown(KeyCode.E)) // Prüft, ob der Spieler 'E' drückt
+        if (isPlayerInRange && Input.GetKeyDown(KeyCode.E)) 
         {
-            // Ruft die Methode im PlayerStats-Skript auf, um Wasser zu trinken
-            PlayerStats playerStats = FindObjectOfType<PlayerStats>(); // Sucht das PlayerStats-Skript im Spiel
+            PlayerStats playerStats = FindObjectOfType<PlayerStats>(); 
             if (playerStats != null)
             {
-                playerStats.DrinkWater(waterAmount); // Erhöht die Water Bar um waterAmount
+                playerStats.DrinkWater(waterAmount); 
                 Debug.Log("You drank water and restored " + waterAmount + "%!");
             }
         }

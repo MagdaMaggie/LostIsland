@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   berryBushWithBerries: {fileID: 2101620632946011140}
-  berryBushEmpty: {fileID: 0}
+  berryBushEmpty: {fileID: 7667391933939144478, guid: dff8dcdc010d82f4faf0a86e27780b56, type: 3}
   playerStats: {fileID: 0}
 --- !u!65 &1038963460168040985
 BoxCollider:
