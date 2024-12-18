@@ -797,6 +797,8 @@ GameObject:
   m_Component:
   - component: {fileID: 477254}
   - component: {fileID: 9547338}
+  - component: {fileID: -3963694815343977078}
+  - component: {fileID: 4710818345947803714}
   m_Layer: 0
   m_Name: Wolf
   m_TagString: Untagged
@@ -836,7 +838,7 @@ Animator:
   m_GameObject: {fileID: 175852}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 1021c3a1a114cd149aa3d292fe946e87, type: 3}
-  m_Controller: {fileID: 9100000, guid: 637de76f13af2dc48b2b805604d0735a, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4207a14823e50e6438f37b401c727159, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -847,6 +849,52 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!195 &-3963694815343977078
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175852}
+  m_Enabled: 1
+  m_AgentTypeID: -1372625422
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &4710818345947803714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63a856b737917534b988bfe399769f2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 1
+  agent: {fileID: 0}
+  animator: {fileID: 0}
+  waypoints:
+  - {fileID: 5727866150882668320, guid: 9cb2a2a292cb5034e884d254b2a0e4ea, type: 3}
+  - {fileID: 6982584755831403908, guid: 9024c3c1ed2b1014d97f1193db0e2d77, type: 3}
+  - {fileID: 1775633436713755076, guid: 77d8c2af5b653034abee71093014be22, type: 3}
+  - {fileID: 2690480920465433082, guid: de0e30147c884104f98403d412ce2112, type: 3}
+  - {fileID: 2366560854201322657, guid: 468ba361fd50a624ea1bd67efa3fb4f7, type: 3}
+  - {fileID: 4146232802965136096, guid: 4ada7cab27d5cbc4795e4e237978a59d, type: 3}
+  idleTime: 3
+  isDay: 1
 --- !u!1 &176664
 GameObject:
   m_ObjectHideFlags: 0
