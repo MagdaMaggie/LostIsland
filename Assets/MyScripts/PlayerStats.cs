@@ -205,7 +205,6 @@ public class PlayerStats : MonoBehaviour
     }
 
     private bool IsUnderWater(){
-        Debug.Log(transform.position.y);
         if(transform.position.y <= 0.25f) {
             return true;
         }else{
