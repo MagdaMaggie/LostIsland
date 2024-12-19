@@ -20,14 +20,6 @@ public class AnimalAI : MonoBehaviour
         if (animator == null) animator = GetComponent<Animator>();
 
         dayNightManager = FindObjectOfType<DayNightManager>();
-        //if (isDay)
-        //{
-        //    ChangeState(State.Walking);
-        //}
-        //else
-        //{
-        //    ChangeState(State.Sitting);
-        //}
     }
 
     void Update()
@@ -57,27 +49,7 @@ public class AnimalAI : MonoBehaviour
         }
     }
 
-    /*void ChangeState(State newState)
-    {
-        currentState = newState;
-
-
-        animator.SetBool("isWalking", false);
-        //animator.SetBool("isSitting", false);
-
-        switch (newState)
-        {
-            case State.Walking:
-                animator.SetBool("isWalking", true);
-                agent.isStopped = false; 
-                MoveToNextWaypoint(); 
-                break;
-            case State.Sitting:
-                animator.SetBool("isSitting", true);
-                agent.isStopped = true; 
-                break;
-        }
-    }*/
+   
 
     void HandleWalkingState()
     {
@@ -93,16 +65,5 @@ public class AnimalAI : MonoBehaviour
         currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length; 
     }
 
-    /*public void ToggleDayNight(bool day)
-    {
-        isDay = day;
-        if (isDay)
-        {
-            ChangeState(State.Walking); 
-        }
-        else
-        {
-            ChangeState(State.Sitting); 
-        }
-    }*/
+    
 }

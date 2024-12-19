@@ -61,7 +61,7 @@ public class MyFPScript : MonoBehaviour
             Debug.Log($"Ground mask set to Terrain layer with mask value: {groundMask.value}");
         }
 
-        UnityEditor.EditorUtility.SetDirty(this);
+        //UnityEditor.EditorUtility.SetDirty(this);
 
         mousePosPrevious = Input.mousePosition;
         //Cursor.lockState = CursorLockMode.Locked;
