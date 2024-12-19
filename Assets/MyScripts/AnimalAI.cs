@@ -4,14 +4,14 @@ using UnityEngine.AI;
 public class AnimalAI : MonoBehaviour
 {
     public enum State { Walking, Sitting }
-    public State currentState;
+    public State currentState = State.Walking;
 
     public NavMeshAgent agent; 
     public Animator animator; 
     public Transform[] waypoints; 
 
-    private int currentWaypointIndex = 0; 
-    public bool isDay = true; 
+    public int currentWaypointIndex = 0; 
+    public DayNightManager dayNightManager;
 
     void Start()
     {
@@ -19,37 +19,51 @@ public class AnimalAI : MonoBehaviour
         if (agent == null) agent = GetComponent<NavMeshAgent>();
         if (animator == null) animator = GetComponent<Animator>();
 
-
-        if (isDay)
-        {
-            ChangeState(State.Walking);
-        }
-        else
-        {
-            ChangeState(State.Sitting);
-        }
+        dayNightManager = FindObjectOfType<DayNightManager>();
+        //if (isDay)
+        //{
+        //    ChangeState(State.Walking);
+        //}
+        //else
+        //{
+        //    ChangeState(State.Sitting);
+        //}
     }
 
     void Update()
     {
+        if (dayNightManager.isDay)
+        {
+            currentState = State.Walking;
+        }
+        else
+        {
+            currentState = State.Sitting;
+        }
+
         switch (currentState)
         {
             case State.Walking:
+                agent.isStopped = false;
+                animator.SetBool("isWalking", true);
+                animator.SetBool("isSitting", false);
                 HandleWalkingState();
                 break;
             case State.Sitting:
-               
+                agent.isStopped = true;
+                animator.SetBool("isWalking", false);
+                animator.SetBool("isSitting", true);
                 break;
         }
     }
 
-    void ChangeState(State newState)
+    /*void ChangeState(State newState)
     {
         currentState = newState;
 
 
         animator.SetBool("isWalking", false);
-        animator.SetBool("isSitting", false);
+        //animator.SetBool("isSitting", false);
 
         switch (newState)
         {
@@ -63,12 +77,12 @@ public class AnimalAI : MonoBehaviour
                 agent.isStopped = true; 
                 break;
         }
-    }
+    }*/
 
     void HandleWalkingState()
     {
-       
-        if (!agent.pathPending && agent.remainingDistance <= agent.stoppingDistance)
+        agent.SetDestination(waypoints[currentWaypointIndex].position);
+        if (Vector3.Distance(transform.position, waypoints[currentWaypointIndex].position) <= agent.stoppingDistance)
         {
             MoveToNextWaypoint(); 
         }
@@ -76,12 +90,10 @@ public class AnimalAI : MonoBehaviour
 
     void MoveToNextWaypoint()
     {
-        if (waypoints.Length == 0) return;
-        agent.SetDestination(waypoints[currentWaypointIndex].position);
         currentWaypointIndex = (currentWaypointIndex + 1) % waypoints.Length; 
     }
 
-    public void ToggleDayNight(bool day)
+    /*public void ToggleDayNight(bool day)
     {
         isDay = day;
         if (isDay)
@@ -92,5 +104,5 @@ public class AnimalAI : MonoBehaviour
         {
             ChangeState(State.Sitting); 
         }
-    }
+    }*/
 }

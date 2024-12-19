@@ -6,6 +6,7 @@ public class MainMenu : MonoBehaviour
     public GameObject optionsPopup;
     public GameObject mainMenuCanvas; 
     public GameObject inGameUICanvas;
+    public GameObject gameOverCanvas;
 
     public GameObject playerPrefab;
     public GameObject mainMenuCamera;
@@ -34,6 +35,7 @@ public class MainMenu : MonoBehaviour
         InGameUI.singleton.InitializeInventorySlots();
         InGameUI.singleton.UpdateUI();
         player.GetComponent<PlayerStats>().inGameUI = InGameUI.singleton;
+        player.GetComponent<PlayerStats>().GameOverCanvas = gameOverCanvas;
 
 
         Debug.Log("Game Started!");

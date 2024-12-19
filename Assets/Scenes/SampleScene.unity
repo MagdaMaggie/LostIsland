@@ -559,6 +559,7 @@ MonoBehaviour:
   optionsPopup: {fileID: 1859908333}
   mainMenuCanvas: {fileID: 606106833}
   inGameUICanvas: {fileID: 442074182}
+  gameOverCanvas: {fileID: 259113720}
   playerPrefab: {fileID: 353225595213175747, guid: e8f26826eef509b469e781c0d66e2da8, type: 3}
   mainMenuCamera: {fileID: 914203}
   StartPosition: {fileID: 558197245}
@@ -2395,6 +2396,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3963694815343977078, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 175852, guid: f8243bb353e5cb74481bb26fe62fd298, type: 3}
       propertyPath: m_Name
       value: Wolf
@@ -5705,7 +5710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26c45456d330a54f950daac803d9be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayDuration: 120
+  dayDuration: 30
   timeMultiplier: 1
   sunLight: {fileID: 705507994}
   moonLight: {fileID: 1681898319}
@@ -5757,6 +5762,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  isDay: 0
 --- !u!4 &2101332629
 Transform:
   m_ObjectHideFlags: 0
@@ -6013,7 +6019,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
