@@ -7,7 +7,6 @@ public class TriggerSound : MonoBehaviour
 
     void Start()
     {
-        // Get the AudioSource component
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
         {
@@ -17,7 +16,6 @@ public class TriggerSound : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // Play the sound when the player enters the trigger area
         if (other.CompareTag("Player") && audioSource != null)
         {
             audioSource.Play();

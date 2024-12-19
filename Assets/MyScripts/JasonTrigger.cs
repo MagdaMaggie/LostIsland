@@ -43,19 +43,16 @@ public class JasonTrigger : MonoBehaviour
 
     void ShowWinPopup()
     {
-        // Show the Win Popup Canvas
+
         if (winPopupCanvas != null)
         {
             winPopupCanvas.SetActive(true);
         }
-
-        // Disable player movement
         if (playerMovementScript != null)
         {
             playerMovementScript.enabled = false;
         }
 
-        // Unlock and show the cursor
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }

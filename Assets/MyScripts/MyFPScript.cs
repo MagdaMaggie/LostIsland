@@ -8,7 +8,7 @@ public class MyFPScript : MonoBehaviour
     public float walkSpeed = 5.0f;
 
     [Tooltip("Backward speed (meters/second)")]
-    public float backwardSpeed = 2.5f; // Slower backward movement
+    public float backwardSpeed = 2.5f; 
 
     [Tooltip("Running speed multiplier")]
     public float runMultiplier = 2.0f;
@@ -40,14 +40,12 @@ public class MyFPScript : MonoBehaviour
 
     void Start()
     {
-        // Initialize the CharacterController and set up mouse locking
         controller = GetComponent<CharacterController>();
 
-        // Check if controller is null and log a warning if it's missing
         if (controller == null)
         {
             Debug.LogWarning("CharacterController component is missing on the GameObject. Please add one in the Inspector.");
-            enabled = false; // Disable this script if CharacterController is missing
+            enabled = false; 
             return;
         }
 
@@ -77,16 +75,14 @@ public class MyFPScript : MonoBehaviour
 
     void HandleMouseLook()
     {
-        // Get the change in mouse position
         Vector3 mousePosCurrent = Input.mousePosition;
         Vector3 mouseDelta = mousePosCurrent - mousePosPrevious;
         mousePosPrevious = mousePosCurrent;
 
-        // Horizontal rotation (Y-axis): Rotate the player
         float deltaRotY = mouseDelta.x * rotScale;
         transform.Rotate(0.0f, deltaRotY, 0.0f);
 
-        // Vertical rotation (X-axis): Rotate the head, clamping between -90 and +90 degrees
+       
         float deltaRotX = mouseDelta.y * rotScale;
         verticalRotation -= deltaRotX;
         verticalRotation = Mathf.Clamp(verticalRotation, -90f, 90f);
@@ -96,27 +92,26 @@ public class MyFPScript : MonoBehaviour
 
     void HandleMovement()
     {
-        // Ground check
         isGrounded = Physics.CheckSphere(transform.position, groundCheckDistance, groundMask);
         if (isGrounded && velocity.y < 0)
-            velocity.y = -2f; // Small downward force to keep grounded
+            velocity.y = -2f; 
 
-        // Determine base movement speed
+
         float speed = walkSpeed;
         Vector3 moveDirection = Vector3.zero;
 
-        // Forward/backward movement
+
         if (Input.GetKey(KeyCode.W))
         {
             moveDirection += transform.forward;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            speed = backwardSpeed; // Use slower speed for backward movement
+            speed = backwardSpeed; 
             moveDirection -= transform.forward;
         }
 
-        // Left/right movement
+
         if (Input.GetKey(KeyCode.A))
         {
             moveDirection -= transform.right;
@@ -126,26 +121,23 @@ public class MyFPScript : MonoBehaviour
             moveDirection += transform.right;
         }
 
-        // Running
         if (Input.GetKey(KeyCode.LeftShift) && moveDirection != Vector3.zero)
         {
-            speed *= runMultiplier; // Increase speed when sprinting
+            speed *= runMultiplier; 
         }
 
-        // Normalize direction to prevent faster diagonal movement and apply speed
+
         moveDirection.Normalize();
         controller.Move(moveDirection * speed * Time.deltaTime);
 
-        // Jumping
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity); // Jump calculation
+            velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
         }
     }
 
     void ApplyGravity()
     {
-        // Apply gravity to the player
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }

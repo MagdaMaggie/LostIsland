@@ -7,7 +7,6 @@ public class CampfireInteraction : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        // Check if the player is near the campfire
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = true;
@@ -20,7 +19,6 @@ public class CampfireInteraction : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        // Player leaves the campfire range
         if (other.CompareTag("Player"))
         {
             isPlayerInRange = false;

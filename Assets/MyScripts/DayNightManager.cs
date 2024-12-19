@@ -56,9 +56,5 @@ public class DayNightManager : MonoBehaviour
         moonLight.enabled = moonIntensity > 0.01f;
 
         isDay = currentTime < 0.5f;
-        /*foreach (AnimalAI animal in FindObjectsOfType<AnimalAI>())
-        {
-            animal.ToggleDayNight(isDay);
-        }*/
     }
 }
