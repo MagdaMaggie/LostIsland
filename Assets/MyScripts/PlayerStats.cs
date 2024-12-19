@@ -124,8 +124,6 @@ public class PlayerStats : MonoBehaviour
             {
                 if(inGameUI.inventorySlots[i].GetComponent<Image>().sprite == InGameUI.singleton.emptySlotSprite)
                 {
-                    // inGameUI.inventorySlots[i] = new GameObject { tag = "Wood" };
-                    //inGameUI.inventorySlots[i].transform.tag = "Wood";
                     Debug.Log(this.gameObject.name + " Old Wood: " + woodCount);
                     woodCount++;
                     Debug.Log(this.gameObject.name + "New Wood: " + woodCount);
@@ -143,9 +141,7 @@ public class PlayerStats : MonoBehaviour
             if (inGameUI.inventorySlots[i] != null)
             {
                 if(inGameUI.inventorySlots[i].GetComponent<Image>().sprite == InGameUI.singleton.emptySlotSprite){
-                    //inGameUI.inventorySlots[i] = Instantiate(berryPrefab); 
-                    //inGameUI.inventorySlots[i].transform.tag = "Berry";
-                    // Add berry count
+
                     inGameUI.UpdateInventoryUI(i, "Berry");
                     break;
                 }
@@ -205,7 +201,8 @@ public class PlayerStats : MonoBehaviour
     }
 
     private bool IsUnderWater(){
-        if(transform.position.y <= 0.25f) {
+        Debug.Log(transform.position.y);
+        if(transform.position.y <= -8f) {
             return true;
         }else{
             return false;
@@ -274,6 +271,6 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    return false; // No berry found in inventory
+    return false; 
     }
 }
