@@ -37,6 +37,8 @@ public class MainMenu : MonoBehaviour
         player.GetComponent<PlayerStats>().inGameUI = InGameUI.singleton;
         player.GetComponent<PlayerStats>().GameOverCanvas = gameOverCanvas;
 
+        Cursor.lockState = CursorLockMode.Locked; 
+        Cursor.visible = false;
 
         Debug.Log("Game Started!");
     }

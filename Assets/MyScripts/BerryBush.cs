@@ -10,6 +10,7 @@ public class BerryBush : MonoBehaviour
     public PlayerStats playerStats;
 
     private bool playerInRange = false;
+    private bool hasBerries = true; 
 
     void Start()
     {
@@ -18,7 +19,7 @@ public class BerryBush : MonoBehaviour
 
     void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E))
+        if (playerInRange && hasBerries && Input.GetKeyDown(KeyCode.E))
         {
             CollectBerries();
             playerStats.AddBerryToInventory(); 
@@ -46,9 +47,12 @@ public class BerryBush : MonoBehaviour
 
     void CollectBerries()
     {
+        if (!hasBerries) return;
+
         berryBushWithBerries.SetActive(false);
         berryBushEmpty.SetActive(true);
 
+        hasBerries = false; 
         Debug.Log("Beeren gesammelt!");
     }
 }
