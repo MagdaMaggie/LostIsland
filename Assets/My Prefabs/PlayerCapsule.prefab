@@ -334,8 +334,8 @@ MonoBehaviour:
   currentHealth: 0
   currentFood: 0
   currentWater: 0
-  foodDecayRate: 0.5
-  waterDecayRate: 1
+  foodDecayRate: 1
+  waterDecayRate: 2
   berryPrefab: {fileID: 1615817615245983648, guid: 825828f5bf6f75c4b82dafc9253e9b56, type: 3}
   woodPrefab: {fileID: 9162822708189475408, guid: 3159aca8d3f03024cba3e91c278a51f6, type: 3}
   CampfirePrefab: {fileID: 1545850687222568397, guid: 73ca12f0968e7b6419cdd1678a69cbe0, type: 3}

@@ -13,8 +13,8 @@ public class PlayerStats : MonoBehaviour
     public int currentFood;
     public int currentWater;
 
-    public float foodDecayRate = 0.5f;
-    public float waterDecayRate = 1f;
+    public float foodDecayRate = 1f;
+    public float waterDecayRate = 2f;
 
     public GameObject berryPrefab;
     public GameObject woodPrefab;
@@ -165,7 +165,7 @@ public class PlayerStats : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(5f);
             currentFood -= Mathf.RoundToInt(foodDecayRate);
             currentFood = Mathf.Max(currentFood, 0);
             CheckHealthDecreaseCondition();
@@ -177,7 +177,7 @@ public class PlayerStats : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(5f);
             currentWater -= Mathf.RoundToInt(waterDecayRate);
             currentWater = Mathf.Max(currentWater, 0);
             CheckHealthDecreaseCondition();
@@ -191,7 +191,7 @@ public class PlayerStats : MonoBehaviour
 
         while (currentHealth > 0 && (currentFood == 0 || currentWater == 0 || IsUnderWater()))
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(3f);
             currentHealth -= 5;
             currentHealth = Mathf.Max(currentHealth, 0);
             inGameUI.UpdateUI();

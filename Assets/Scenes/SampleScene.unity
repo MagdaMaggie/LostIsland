@@ -11699,7 +11699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26c45456d330a54f950daac803d9be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayDuration: 30
+  dayDuration: 120
   timeMultiplier: 1
   sunLight: {fileID: 705507994}
   moonLight: {fileID: 1681898319}
