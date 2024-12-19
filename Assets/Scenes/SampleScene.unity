@@ -2688,7 +2688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 51080232881082202, guid: 48bacab78e5911a43a0fc97a0df2f129, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.241444
+      value: 6.3
       objectReference: {fileID: 0}
     - target: {fileID: 51080232881082202, guid: 48bacab78e5911a43a0fc97a0df2f129, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5831,6 +5831,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   winPopupCanvas: {fileID: 1269222243}
   playerMovementScript: {fileID: 0}
+  inGameUI: {fileID: 0}
 --- !u!1001 &1018756558
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7970,7 +7971,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 51080232881082202, guid: 48bacab78e5911a43a0fc97a0df2f129, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.4573197
+      value: 1.26
       objectReference: {fileID: 0}
     - target: {fileID: 51080232881082202, guid: 48bacab78e5911a43a0fc97a0df2f129, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10133,7 +10134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 51080232881082202, guid: 48bacab78e5911a43a0fc97a0df2f129, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.0181537
+      value: 5.27
       objectReference: {fileID: 0}
     - target: {fileID: 51080232881082202, guid: 48bacab78e5911a43a0fc97a0df2f129, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11629,8 +11630,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -5, y: 45}
-  m_SizeDelta: {x: 1100, y: 409.2707}
+  m_AnchoredPosition: {x: -5, y: 37.317688}
+  m_SizeDelta: {x: 1100, y: 424.63538}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2099080007
 MonoBehaviour:
@@ -11699,7 +11700,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d26c45456d330a54f950daac803d9be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayDuration: 120
+  dayDuration: 240
   timeMultiplier: 1
   sunLight: {fileID: 705507994}
   moonLight: {fileID: 1681898319}
@@ -12392,7 +12393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 51080232881082202, guid: 48bacab78e5911a43a0fc97a0df2f129, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.23219854
+      value: 2.98
       objectReference: {fileID: 0}
     - target: {fileID: 51080232881082202, guid: 48bacab78e5911a43a0fc97a0df2f129, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12457,7 +12458,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7693334159422797601, guid: f69b78b14d1625f42b48e665eb59cb29, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.052236
+      value: 4.66
       objectReference: {fileID: 0}
     - target: {fileID: 7693334159422797601, guid: f69b78b14d1625f42b48e665eb59cb29, type: 3}
       propertyPath: m_LocalPosition.z

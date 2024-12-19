@@ -80,6 +80,11 @@ public class InGameUI : MonoBehaviour
         }
     }
 
+    public void ToggleUI(bool isVisible)
+    {
+        gameObject.SetActive(isVisible);
+    }
+
     public void UpdateInventoryUI(int index, string item)
     {
         if (item != null)

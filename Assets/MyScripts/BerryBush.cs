@@ -53,6 +53,17 @@ public class BerryBush : MonoBehaviour
         berryBushEmpty.SetActive(true);
 
         hasBerries = false; 
-        Debug.Log("Beeren gesammelt!");
+
+        StartCoroutine(RespawnBerries());
+    }
+
+    private IEnumerator RespawnBerries()
+    {
+        yield return new WaitForSeconds(30f); 
+
+        berryBushWithBerries.SetActive(true);
+        berryBushEmpty.SetActive(false);
+
+        hasBerries = true; 
     }
 }

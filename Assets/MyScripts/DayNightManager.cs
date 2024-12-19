@@ -55,6 +55,7 @@ public class DayNightManager : MonoBehaviour
         sunLight.enabled = sunIntensity > 0.01f;
         moonLight.enabled = moonIntensity > 0.01f;
 
-        isDay = currentTime < 0.5f;
+        isDay = currentTime >= 0.25f && currentTime <= 0.75f;
+        Debug.Log($"Current Time: {currentTime}, Is Day: {isDay}");
     }
 }

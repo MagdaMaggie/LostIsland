@@ -7,6 +7,8 @@ public class JasonTrigger : MonoBehaviour
     public MyFPScript playerMovementScript; 
     private bool isPlayerInRange = false;
 
+    public InGameUI inGameUI;
+
     void Start()
     {
         if (winPopupCanvas != null)
@@ -48,6 +50,12 @@ public class JasonTrigger : MonoBehaviour
         {
             winPopupCanvas.SetActive(true);
         }
+
+        if (inGameUI != null)
+        {
+            inGameUI.ToggleUI(false); 
+        }
+
         if (playerMovementScript != null)
         {
             playerMovementScript.enabled = false;

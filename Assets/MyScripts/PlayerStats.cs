@@ -77,6 +77,11 @@ public class PlayerStats : MonoBehaviour
             GameOverCanvas.SetActive(true);
         }
 
+        if (inGameUI != null)
+        {
+            inGameUI.ToggleUI(false); 
+        }
+
         if (playerMovementScript != null)
         {
             playerMovementScript.enabled = false;
@@ -165,7 +170,7 @@ public class PlayerStats : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(3f);
             currentFood -= Mathf.RoundToInt(foodDecayRate);
             currentFood = Mathf.Max(currentFood, 0);
             CheckHealthDecreaseCondition();
@@ -177,7 +182,7 @@ public class PlayerStats : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(3f);
             currentWater -= Mathf.RoundToInt(waterDecayRate);
             currentWater = Mathf.Max(currentWater, 0);
             CheckHealthDecreaseCondition();
